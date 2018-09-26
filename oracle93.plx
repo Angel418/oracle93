@@ -20,7 +20,11 @@ chomp $oracle;
 # label for later if statement checking if the following 
 # choice is correct
 
-NATURE:
+NATURE: 
+# Starting with the Western Standard - The Tree of Life. There needs to be consideration whether the number itself should be used
+# as simply the number of numbers generated, or whether we should use it in the RNG seed as well, and if so, should we use it straight
+# or opt for a solution with magic squares, or the "Sacred Numbers" of each element.
+
 system 'cls'; # clear screen
 say "Of what nature is your question?
 
@@ -50,18 +54,16 @@ if ($nature > 10 || $nature < 1 ){
 	goto NATURE;
 }
 
-# giving people choices is good, but here we limit the value of the variable to 1-10.
+system 'cls'; # clear screen - windows only; need to look for a solution that'll clear the CMD line on any system.
 
-system 'cls'; # clear screen
-
-# turns question and oracle strings into ASCII numbers, 
-# then adds them together forming the seed of the question
+# Turns $question and $oracle strings into ASCII numbers, 
+# then sums them forming the seed of the question
 # from which pseudo-random numbers are generated
 
 my @seedarray = unpack ("C*", $question.$oracle);
 my $seed = eval join '+', @seedarray;
 
-# use generated seed and initialize the array into which answers will go
+# use generated seed and create the array into which answers will go
 
 srand (int($seed)*$nature);
 my @answers;
@@ -78,7 +80,7 @@ for (my $i = 0; $i < $nature; $i++){
 	}
 }
 
-# nice table printout of answers
+# nice table printout of answers - this will need to be "nicened" eventually
 printf "------------------------------------------------------------\n";
 printf "\tYour Question Was:\n";
 printf "\t$question\n";
@@ -101,6 +103,9 @@ for (my $i = 0; $i < $nature; $i++){
 	printf "------------------------------------------------------------\n";
 }
 
+# Connecting to a large database of number interpretations
+# It'd be great to somehow find a way of analyzing/ interpreting numbers on the fly
+
 printf "\tPlease consult Bill Heidrick's 
 \tHebrew Gematria database for 
 \tfurther information.
@@ -108,6 +113,10 @@ printf "\tPlease consult Bill Heidrick's
 \thttp://www.billheidrick.com/works/hgemat.htm"."\n";
 printf "------------------------------------------------------------\n\n";
 
+
+# Magic Words is basically simplified bibliomancy - it pulls words from 
+# a text file (one word per line), using a simple shuffle function. 
+# I'll still need to find a way of using the previously generated seed for this.
 
 MAGICWORDS:
 printf "Would you like to see some magic words?
@@ -119,12 +128,20 @@ if (fc($magicwords) eq "yes"){
 	HOWMANYMAGICWORDS:
 	printf "How many magic words would you like?";
 	my $numberofmagicwords = <STDIN>;
-	chomp $numberofmagicwords;
+	chomp $numberofmagicwords; 
 	if ($numberofmagicwords < 1){
 		goto HOWMANYMAGICWORDS;
 	}
-	open (IN, "<", "wordlist.txt");
-	my @lines = shuffle(<IN>);
+	
+	# the file with words right now is just in the same directory as the script itself, called "wordlist.txt"
+	# one word per line
+	
+	open (IN, "<", "wordlist.txt"); 
+	
+	# shuffles the lines into an array; very inefficient, since the whole file is basically copied into memory (~5MB)
+	# likely could be simplified more
+	
+	my @lines = shuffle(<IN>); 
 	printf "Your magic words are:\n";
 	for my $i (1 .. $numberofmagicwords){
 		printf @lines[$i];
@@ -138,4 +155,3 @@ elsif (fc($magicwords) eq "no"){
 else{
 	goto MAGICWORDS;
 }
-

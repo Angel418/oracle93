@@ -5,29 +5,48 @@ use feature ':all';
 use experimental 'smartmatch';
 use List::Util qw(shuffle);
 
-print "Choose mode:
+our $choice;
+our $mode = $ARGV[0];
+
+if (@ARGV == 0){
+    print "Choose mode:
     1. Gematria from the aether
     2. Magic words from a list
-    3. Opening of the Key (Tarot)\n";
+    3. (default) Opening of the Key (Tarot)\n";
 
-our $mode = <STDIN>;
-chomp $mode;
+    $choice = <STDIN>;
+    chomp $choice;
+    if ($choice == "1") {
+        $mode = "gematria";
+    }
+    if ($choice == "2") {
+        $mode = "magicwords";
+    }
+    if ($choice == "3") {
+        $mode = "ootk";
+    }
+    goto MODESELECT;
+    print "sorry!";
+    exit;
+}
 
-if ($mode == "1") {
+  MODESELECT:
+
+if ($mode eq "gematria") {
     gematria();
     exit;
 }
-if ($mode == "2") {
+if ($mode eq "magicwords") {
     magicwords();
     exit;
 }
-if ($mode == "3") {
+if ($mode eq "ootk") {
     ootk();
     exit;
 }
 else {
-    print "sorry!";
-        exit;
+    $mode = "choose";
+    goto MODESELECT;
 }
 
 sub gematria  {
@@ -325,5 +344,205 @@ sub ootk {
         print "$shuffle[$_] ";
     }
     print "\n";
+
+    printf "\n------------------------------------------------------------\n";
+
+    # Decanates
+    @shuffle = shuffle(@deck);
+
+    print "Operation IV: Decanates\n";
+    print "Aries 1-10:\t\t";
+    for (0...2) {
+        print "$shuffle[$_] ";
+    }
+    print "\nAries 10-20:\t\t";
+    for (3...5) {
+        print "$shuffle[$_] ";
+    }
+    print "\nAries 20-30:\t\t";
+    for (6...8) {
+        print "$shuffle[$_] ";
+    }
+    print "\nTaurus 1-10:\t\t";
+    for (9...11) {
+        print "$shuffle[$_] ";
+    }
+    print "\nTaurus 10-20:\t\t";
+    for (12...14) {
+        print "$shuffle[$_] ";
+    }
+    print "\nTaurus 20-30:\t\t";
+    for (15...17) {
+        print "$shuffle[$_] ";
+    }
+    print "\nGemini 1-10:\t\t";
+    for (18...19) {
+        print "$shuffle[$_] ";
+    }
+    print "\nGemini 10-20:\t\t";
+    for (20...21) {
+        print "$shuffle[$_] ";
+    }
+    print "\nGemini 20-30:\t\t";
+    for (22...23) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCancer 1-10:\t\t";
+    for (24...25) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCancer 10-20:\t\t";
+    for (26...27) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCancer 20-30:\t\t";
+    for (28...29) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLeo 1-10:\t\t";
+    for (30...31) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLeo 10-20:\t\t";
+    for (32...33) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLeo 20-30:\t\t";
+    for (34...35) {
+        print "$shuffle[$_] ";
+    }
+    print "\nVirgo 1-10:\t\t";
+    for (36...37) {
+        print "$shuffle[$_] ";
+    }
+    print "\nVirgo 10-20:\t\t";
+    for (38...39) {
+        print "$shuffle[$_] ";
+    }
+    print "\nVirgo 20-30:\t\t";
+    for (40...41) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLibra 1-10:\t\t";
+    for (42...43) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLibra 10-20:\t\t";
+    for (44...45) {
+        print "$shuffle[$_] ";
+    }
+    print "\nLibra 20-30:\t\t";
+    for (46...47) {
+        print "$shuffle[$_] ";
+    }
+    print "\nScorpio 1-10:\t\t";
+    for (48...49) {
+        print "$shuffle[$_] ";
+    }
+    print "\nScorpio 10-20:\t\t";
+    for (50...51) {
+        print "$shuffle[$_] ";
+    }
+    print "\nScorpio 20-30:\t\t";
+    for (52...53) {
+        print "$shuffle[$_] ";
+    }
+    print "\nSagittarius 1-10:\t";
+    for (54...55) {
+        print "$shuffle[$_] ";
+    }
+    print "\nSagittarius 10-20:\t";
+    for (56...57) {
+        print "$shuffle[$_] ";
+    }
+    print "\nSagittarius 20-30:\t";
+    for (58...59) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCapricorn 1-10:\t\t";
+    for (60...61) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCapricorn 10-20:\t";
+    for (62...63) {
+        print "$shuffle[$_] ";
+    }
+    print "\nCapricorn 20-30:\t";
+    for (64...65) {
+        print "$shuffle[$_] ";
+    }
+    print "\nAquarius 1-10:\t\t";
+    for (66...67) {
+        print "$shuffle[$_] ";
+    }
+    print "\nAquarius 10-20:\t\t";
+    for (68...69) {
+        print "$shuffle[$_] ";
+    }
+    print "\nAquarius 20-30:\t\t";
+    for (70...71) {
+        print "$shuffle[$_] ";
+    }
+    print "\nPisces 1-10:\t\t";
+    for (72...73) {
+        print "$shuffle[$_] ";
+    }
+    print "\nPisces 10-20:\t\t";
+    for (74...75) {
+        print "$shuffle[$_] ";
+    }
+    print "\nPisces 20-30:\t\t";
+    for (76...77) {
+        print "$shuffle[$_] ";
+    }
+
+    printf "\n------------------------------------------------------------\n";
+
+    # Tree of Life
+    @shuffle = shuffle(@deck);
+
+    print "Operation V: Tree of Life\n";
+    print "Kether:\t\t";
+    for (0...7) {
+        print "$shuffle[$_] ";
+    }
+    print "\nChokmah:\t";
+    for (8...15) {
+        print "$shuffle[$_] ";
+    }
+    print "\nBinah:\t\t";
+    for (16...23) {
+        print "$shuffle[$_] ";
+    }
+    print "\nChesed:\t\t";
+    for (24...31) {
+        print "$shuffle[$_] ";
+    }
+    print "\nGeburah:\t";
+    for (32...39) {
+        print "$shuffle[$_] ";
+    }
+    print "\nTiphareth:\t";
+    for (40...47) {
+        print "$shuffle[$_] ";
+    }
+    print "\nNetzach:\t";
+    for (48...55) {
+        print "$shuffle[$_] ";
+    }
+    print "\nHod:\t\t";
+    for (56...63) {
+        print "$shuffle[$_] ";
+    }
+    print "\nYesod:\t\t";
+    for (64...70) {
+        print "$shuffle[$_] ";
+    }
+    print "\nMalkuth:\t";
+    for (70...77) {
+        print "$shuffle[$_] ";
+    }
+    print "\n";
+
 
 }

@@ -15,27 +15,30 @@ chomp $mode;
 
 if ($mode == "1") {
     gematria();
+    exit;
 }
 if ($mode == "2") {
     magicwords();
+    exit;
 }
 if ($mode == "3") {
     ootk();
+    exit;
 }
 else {
     print "sorry!";
         exit;
 }
 
-sub gematria () {
+sub gematria  {
 
 system 'clear'; # clear screen
-print "Your question please:";
+print "Your question please:\n";
 my $question = <STDIN>;
 chomp $question;
 
 system 'clear'; # clear screen
-print "Whom would you like to ask:";
+print "Whom would you like to ask:\n";
 my $oracle = <STDIN>;
 chomp $oracle;
 
@@ -74,7 +77,7 @@ if ($nature > 10 || $nature < 1 ){
         goto NATURE;
 }
 
-system 'clear'; # clear screen - windows only; need to look for a solution that'll clear the CMD line on any system.
+system 'clear'; # clear screen - linux only; need to look for a solution that'll clear the CMD line on any system.
 
 # Turns $question and $oracle strings into ASCII numbers,
 # then sums them forming the seed of the question
@@ -134,7 +137,7 @@ printf "------------------------------------------------------------\n\n";
 
 }
 
-sub magicwords () {
+sub magicwords  {
 
 # Magic Words is basically simplified bibliomancy - it pulls words from
 # a text file (one word per line), using a simple shuffle function.
@@ -166,7 +169,7 @@ if (fc($magicwords) eq "yes"){
         my @lines = shuffle(<IN>);
         printf "Your magic words are:\n";
         for my $i (1 .. $numberofmagicwords){
-                printf @lines[$i];
+                printf $lines[$i];
         }
 }
 elsif (fc($magicwords) eq "no"){
@@ -180,7 +183,7 @@ else{
 
 }
 
-sub ootk () {
+sub ootk {
 
     system 'clear';
 
@@ -197,76 +200,77 @@ sub ootk () {
     print "Operation I: IHVH\n";
     print "Yod:\t";
     for (0...18) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nHeh:\t";
     for (19...37) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nVav:\t";
     for (38...57) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nHeh:\t";
     for (58...77) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
 
-    print "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+    printf "\n------------------------------------------------------------\n";
+
     # Houses
     @shuffle = shuffle(@deck);
 
     print "Operation II: Houses\n";
     print "I:\t";
     for (0...6) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nII:\t";
     for (7...13) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nIII:\t";
     for (14...20) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nIV:\t";
     for (21...27) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nV:\t";
     for (28...34) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nVI:\t";
     for (35...41) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nVII:\t";
     for (42...47) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nVIII:\t";
     for (48...53) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nIX:\t";
     for (54...59) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nX:\t";
     for (60...65) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nXI:\t";
     for (66...71) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nXII:\t";
     for (72...77) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
 
-    print "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+    printf "\n------------------------------------------------------------\n";
 
     # Zodiac
     @shuffle = shuffle(@deck);
@@ -274,51 +278,52 @@ sub ootk () {
     print "Operation III: Zodiac\n";
     print "Aries:\t\t";
     for (0...6) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nTaurus:\t\t";
     for (7...13) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nGemini:\t\t";
     for (14...20) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nCancer:\t\t";
     for (21...27) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nLeo:\t\t";
     for (28...34) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nVirgo:\t\t";
     for (35...41) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nLibra:\t\t";
     for (42...47) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nScorpio:\t";
     for (48...53) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nSagittarius:\t";
     for (54...59) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nCapricorn:\t";
     for (60...65) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nAquarius:\t";
     for (66...71) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
     print "\nPisces:\t\t";
     for (72...77) {
-        print "@shuffle[$_] ";
+        print "$shuffle[$_] ";
     }
+    print "\n";
 
 }
